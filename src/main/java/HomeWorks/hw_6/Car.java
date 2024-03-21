@@ -1,35 +1,23 @@
 package HomeWorks.hw_6;
 
-/**
- *
- */
 public final class Car extends Motortransport {
     private String brand;
     private String model;
 
-    public Car(int wheelCount, int maxSpeed, String engineType, String brand, String model) {
+    private Car(int wheelCount, int maxSpeed, String engineType, Builder builder) {
         super(wheelCount, maxSpeed, engineType);
-        this.brand = brand;
-        this.model = model;
+        this.brand = builder.brand;
+        this.model = builder.model;
     }
 
     public String getBrand() {
         return brand;
     }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
     public String getModel() {
         return model;
     }
 
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    final public static void blockTheDoors() {
+    public void blockTheDoors() {
         System.out.println("Двери автомобиля заблокированы");
     }
 
@@ -41,14 +29,40 @@ public final class Car extends Motortransport {
     private void carCheck(){
         System.out.println("Была произведена ревизия автомобиля марки " + brand + " модели " + model);
     }
-    /**
-     В подклассах вынести специфическое обслуживание из метода service в приватные методы, например:
 
-     public void service() {
-     super.service();
-     checkEngine();
-     }
+    //---- БИЛДЕР КЛАСС------------------------------------------------------------------
+    public static class Builder  {
+        private String engineType;
+        private int wheelCount;
+        private int maxSpeed;
+        private String brand;
+        private String model;
 
-     private void checkEngine() {...}*/
+        public Builder brand(String brand) {
+            this.brand = brand;
+            return this;
+        }
+        public Builder wheelCount(int wheelCount) {
+            this.wheelCount = wheelCount;
+            return this;
+        }
+        public Builder maxSpeed(int maxSpeed) {
+            this.maxSpeed = maxSpeed;
+            return this;
+        }
+        public Builder engineType(String engineType) {
+            this.engineType = engineType;
+            return this;
+        }
+
+        public Builder model(String model) {
+            this.model = model;
+            return this;
+        }
+
+        public Car build() {
+            return new Car(this.wheelCount, this.maxSpeed, this.engineType,  this);
+        }
+    }
 }
 
