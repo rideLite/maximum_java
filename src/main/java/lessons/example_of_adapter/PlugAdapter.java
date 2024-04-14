@@ -1,4 +1,4 @@
-package HomeWorks.example_of_adapter;
+package lessons.example_of_adapter;
 
 public class PlugAdapter implements EuropeanPlug {
     private BritishPlug britishPlug;

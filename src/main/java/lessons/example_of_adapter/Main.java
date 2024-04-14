@@ -1,4 +1,4 @@
-package HomeWorks.example_of_adapter;
+package lessons.example_of_adapter;
 
 import java.util.Arrays;
 import java.util.List;

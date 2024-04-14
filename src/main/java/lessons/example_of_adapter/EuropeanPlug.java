@@ -1,4 +1,4 @@
-package HomeWorks.example_of_adapter;
+package lessons.example_of_adapter;
 
 public interface EuropeanPlug {
     void useEuropeanPlug();
